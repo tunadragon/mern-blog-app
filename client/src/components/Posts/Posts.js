@@ -8,6 +8,10 @@ import './styles.scss';
 const Posts = ({ setCurrentId }) => {
     const posts = useSelector((state) => state.posts); // defined as posts in reducer index.js
 
+    const sortByDate = (a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt)
+    }
+
     return (
         !posts.length ? 
         <CircularProgress /> :
@@ -16,7 +20,7 @@ const Posts = ({ setCurrentId }) => {
             container 
             alignItems="stretch" 
             spacing={3}>
-            {posts.reverse().map(post => (
+            {posts.sort(sortByDate).map(post => (
                 <Grid key={post._id} item xs={12} sm={6}>
                     <Post post={post} setCurrentId={setCurrentId} />
                 </Grid>
