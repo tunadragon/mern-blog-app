@@ -1,0 +1,50 @@
+.post {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px !important;
+
+    .post__tags, .post__title, .post__body, .post__actions {
+        padding: 0 20px;
+        padding-bottom: 20px;
+    }
+
+    .post__body {
+        line-break: anywhere;
+    }
+
+    .post__tags {
+        padding-top: 20px;
+    }
+
+    .post__actions {
+        display: flex;
+        justify-content: space-between;
+        
+         .post__likeButton {
+             padding-left: 0;
+         }
+    }
+
+    .post__overlay {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        max-width: 60%;
+    }
+    .post__overlay2 {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        color: white;
+    }
+    .post__media {
+        height: 0;
+        padding-top: 56.25%;
+        background-color: rgba(0,0,0,0.5);
+        background-blend-mode: darken;
+    }
+}
