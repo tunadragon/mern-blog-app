@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts'
 import { useSelector } from 'react-redux';
 
-import useStyles from './styles';
+import './styles.scss';
 
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({
@@ -19,9 +19,7 @@ const Form = ({ currentId, setCurrentId }) => {
         ? state.posts.find(p => p._id === currentId) 
         : null);
     const user = JSON.parse(localStorage.getItem('profile'))
-    const classes = useStyles();
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         if (post) setPostData(post)
@@ -45,18 +43,18 @@ const Form = ({ currentId, setCurrentId }) => {
 
     if(!user?.result?.name) {
         return (
-            <Paper className={classes.paper}>
+            <Paper className="paper">
                 <Typography variant="h6" align="center">Please sign in to create and like posts.</Typography>
             </Paper>
         )
     } 
 
     return (
-        <Paper className={classes.paper}>
+        <Paper className="paper">
             <form 
                 autoComplete="off" 
                 noValidate 
-                className={`${classes.root} ${classes.form}`} 
+                className={`${'root'} ${'form'}`} 
                 onSubmit={handleSubmit}>
                 <Typography variant="h6">{currentId ? 'Edit ' : 'Create a '} Post</Typography>
                 {/* <TextField 
@@ -91,7 +89,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     value={postData.tags}
                     onChange={e => setPostData({ ...postData, tags: e.target.value.split(',') })}
                 ></TextField>
-                <div className={classes.fileInput}>
+                <div className='fileInput'>
                     <FileBase 
                         type="file"
                         multiple={false}
@@ -99,7 +97,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     />
                 </div>
                 <Button
-                    className={classes.buttonSubmit}
+                    className='submitButton'
                     variant="contained"
                     color="primary"
                     size="large"

@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { signin, signup } from '../../actions/auth';
 import Input from './Input';
 import Icon from './icon';
-import useStyles from './styles';
+import './styles.scss';
 
 const initialState = {
     firstName: '',
@@ -18,7 +18,6 @@ const initialState = {
 }
 
 const Auth = () => {
-    const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
     
@@ -65,13 +64,13 @@ const Auth = () => {
     }
 
     return (
-        <Container component="main" maxWidth="xs">
-            <Paper className={classes.paper} elevation={3}>
-                <Avatar className={classes.avatar}>
+        <Container className="auth" component="main" maxWidth="xs">
+            <Paper className="paper" elevation={3}>
+                <Avatar className="avatar">
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography variant="h5">{isSignUp ? 'Sign Up' : 'Sign In'}</Typography>
-                <form className={classes.form} onSubmit={handleSubmit}>
+                <form className="form" onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         {
                             isSignUp && (
@@ -87,14 +86,14 @@ const Auth = () => {
                             <Input name="confirmPassword" label="Re-enter Password" handleChange={handleChange} type="password" />
                         }
                         
-                        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                        <Button type="submit" fullWidth variant="contained" color="primary" className="submitButton">
                             {isSignUp ? 'Sign Up' : 'Sign In'}
                         </Button>
                         <GoogleLogin 
                             clientId="271983167356-hviil5t1qdu62mve7tf0ok3llccej6cu.apps.googleusercontent.com"
                             render={(renderProps) => (
                                 <Button 
-                                    className={classes.googleButton} 
+                                    className="googleButton" 
                                     color="primary" 
                                     fullWidth 
                                     onClick={renderProps.onClick} 

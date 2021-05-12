@@ -7,11 +7,10 @@ import moment from 'moment';
 import { useDispatch } from 'react-redux'
 import { deletePost, likePost } from '../../../actions/posts'
 
-import useStyles from './styles';
+import './styles.scss';
 
 const Post = ({ post, setCurrentId }) => {
     const user = JSON.parse(localStorage.getItem('profile'))
-    const classes = useStyles();
     const dispatch = useDispatch();
 
     // const Likes = () => {
@@ -26,12 +25,12 @@ const Post = ({ post, setCurrentId }) => {
     // }
     
     return (
-        <Card className={classes.card}>
+        <Card className="post">
             <CardMedia 
-                className={classes.media} 
+                className="post__media" 
                 image={post.selectedFile}
                 title={post.title} />
-            <div className={classes.overlay}>
+            <div className="post__overlay">
                 <Typography variant="h6">
                     {post.name}
                 </Typography>
@@ -40,7 +39,7 @@ const Post = ({ post, setCurrentId }) => {
                 </Typography>
             </div>
             {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
-                <div className={classes.overlay2}>
+                <div className="post__overlay2">
                     <Button 
                         style={{color: 'white'}} 
                         size="small" 
@@ -49,7 +48,7 @@ const Post = ({ post, setCurrentId }) => {
                     </Button>
                 </div>
             )}
-            <div className={classes.details}>
+            <div className="post__tags">
                 <Typography 
                     variant="body2"
                     color="textSecondary"
@@ -58,13 +57,13 @@ const Post = ({ post, setCurrentId }) => {
                 </Typography>
             </div>
             <Typography 
-                className={classes.title}
+                className="post__title"
                 variant="h5"
                 gutterBottom
             >
                 {post.title}
             </Typography>
-            <CardContent>
+            <CardContent className="post__body">
                 <Typography 
                         variant="body2"
                         color="textSecondary"
@@ -73,8 +72,9 @@ const Post = ({ post, setCurrentId }) => {
                         {post.message}
                 </Typography>
             </CardContent>
-            <CardActions className={classes.cardActions}>
+            <CardActions className="post__actions">
                 <Button 
+                    className="post__likeButton"
                     disabled={!user?.result}
                     size="small" 
                     color="primary" 
