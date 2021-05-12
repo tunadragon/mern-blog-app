@@ -28,7 +28,7 @@ const Form = ({ currentId, setCurrentId }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(currentId) { // != null
+        if(currentId) { 
             dispatch(updatePost(currentId, {...postData, name: user?.result?.name}))
         } else {
             dispatch(createPost({...postData, name: user?.result?.name}));
@@ -84,10 +84,10 @@ const Form = ({ currentId, setCurrentId }) => {
                 <TextField 
                     name="tags" 
                     variant="outlined" 
-                    label="Tags" 
+                    label="Tags (separate with commas)" 
                     fullWidth 
                     value={postData.tags}
-                    onChange={e => setPostData({ ...postData, tags: e.target.value.split(',') })}
+                    onChange={e => setPostData({ ...postData, tags: e.target.value.split(',').map(tag => tag.trim()) })}
                 ></TextField>
                 <div className='fileInput'>
                     <FileBase 

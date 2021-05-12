@@ -19,7 +19,7 @@ const Home = () => {
     return (
         <Grow in>
             <Container className="home">
-                <Grid container justify="space-between" alignItems="stretch" spacing={3} >
+                <Grid className="home__container" container justify="space-between" alignItems="stretch" spacing={3} >
                     <Grid item xs={12} sm={12} md={7}> {/* XS=extra-small devices, SM=small-medium -> 7/12 spaces on small-medium devices*/}
                         <Posts setCurrentId={setCurrentId} />
                     </Grid>

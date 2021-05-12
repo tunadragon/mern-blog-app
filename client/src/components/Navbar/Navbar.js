@@ -18,6 +18,10 @@ const Navbar = () => {
         setUser(null)
     }
 
+    const redirectToHome = () => {
+        history.push('/')
+    }
+
     useEffect(() => {
         const token = user?.token;
         if (token) {
@@ -28,13 +32,14 @@ const Navbar = () => {
 
         setUser(JSON.parse(localStorage.getItem('profile')));
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location])
 
     return (
         <AppBar className="navbar" position="static" color="inherit">
-            <div className="navbar__brandContainer">
+            <div className="navbar__brandContainer" onClick={redirectToHome}>
                 <img className="navbar__image" src={logo} alt="Web Gallery 2.0" height="60" />
-                <Typography component={Link} to="/" className="navbar__heading" variant="h2" align="center">Web Gallery 2.0</Typography>
+                <Typography className="navbar__heading" variant="h2" align="center">Web Blog</Typography>
             </div>
             <Toolbar className="navbar__toolbar">
                 {user ? (

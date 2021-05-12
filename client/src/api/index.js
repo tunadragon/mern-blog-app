@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API = axios.create({baseURL: 'http://localhost:5000'})
+const API = axios.create({baseURL: 'https://webgallery2.herokuapp.com'})
 
 // called on every request (add token to request header)
 API.interceptors.request.use((req) => {

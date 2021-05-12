@@ -11,6 +11,10 @@
         padding-bottom: 20px;
     }
 
+    .post__body {
+        line-break: anywhere;
+    }
+
     .post__tags {
         padding-top: 20px;
     }
@@ -29,6 +33,7 @@
         top: 20px;
         left: 20px;
         color: white;
+        max-width: 60%;
     }
     .post__overlay2 {
         position: absolute;

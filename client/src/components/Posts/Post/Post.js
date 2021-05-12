@@ -6,6 +6,8 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import { useDispatch } from 'react-redux'
 import { deletePost, likePost } from '../../../actions/posts'
+import placeholder from '../../../images/placeholderImage.jpg'
+
 
 import './styles.scss';
 
@@ -28,7 +30,7 @@ const Post = ({ post, setCurrentId }) => {
         <Card className="post">
             <CardMedia 
                 className="post__media" 
-                image={post.selectedFile}
+                image={post.selectedFile==='' ? placeholder : post.selectedFile}
                 title={post.title} />
             <div className="post__overlay">
                 <Typography variant="h6">
@@ -53,7 +55,7 @@ const Post = ({ post, setCurrentId }) => {
                     variant="body2"
                     color="textSecondary"
                 >
-                    {post.tags.map(tag => `#${tag} `)}
+                    {post.tags.length > 0 && post.tags[0]!=='' ? post.tags.map(tag => `#${tag.trim()} `) : 'No tags'}
                 </Typography>
             </div>
             <Typography 
@@ -61,7 +63,7 @@ const Post = ({ post, setCurrentId }) => {
                 variant="h5"
                 gutterBottom
             >
-                {post.title}
+                {post.title.trim() === '' ? 'Untitled' : post.title}
             </Typography>
             <CardContent className="post__body">
                 <Typography 
